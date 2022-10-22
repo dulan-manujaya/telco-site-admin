@@ -13,7 +13,6 @@ const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [markers, setMarkers] = useState([]);
   const [filteredMarkers, setFilteredMarkers] = useState([]);
-  const [seconds, setSeconds] = useState(0);
   const [searchKey, setSearchKey] = useState("");
 
   const defaultProps = {
@@ -21,13 +20,12 @@ const Dashboard = () => {
       lat: 8.3114,
       lng: 80.4037,
     },
-    zoom: window.screen.availHeight > window.screen.availWidth ? 9.0 : 9.0,
+    zoom: 9.0,
   };
 
   useEffect(() => {
     getLocations();
     const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1);
       getLocations();
     }, 60000);
     return () => clearInterval(interval);

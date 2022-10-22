@@ -15,7 +15,7 @@ const EditDialog = (props) => {
       lng: lng,
       status: status,
     };
-    CommonUpdate("sites", site)
+    CommonUpdate("updateSite", site)
       .then((res) => res.json())
       .then((json) => {
         props.getLocations();
@@ -23,17 +23,6 @@ const EditDialog = (props) => {
       });
   };
 
-  const deleteSite = () => {
-    const site = {
-      _id: props._id
-    };
-    CommonDeleteById("sites", site)
-      .then((res) => res.json())
-      .then((json) => {
-        props.getLocations();
-        props.closeModal();
-      });
-  };
   return (
     <>
       <div className="container mx-auto my-2 p-2"></div>
@@ -114,7 +103,7 @@ const EditDialog = (props) => {
         </div>
       </form>
       <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-      {/* <button
+        {/* <button
           className="text-white bg-red-600 font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 absolute left-5"
           type="button"
           onClick={() => deleteSite()}
